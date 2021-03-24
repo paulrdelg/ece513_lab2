@@ -12,7 +12,7 @@ import numpy as np
 import PIL
 from sklearn.decomposition import PCA
 import scipy
-from scipy import fftpack
+#from scipy import fftpack # Legacy
 
 def showPepperOCV(title, img):
 	# Output img with window name as 'image'
@@ -39,8 +39,8 @@ def showPepperPIL(img):
 
 # implement 2D DCT
 def dct2(a, n):
-	return fftpack.dct( fftpack.dct(a.T, n=n, norm='ortho').T, n=n, norm='ortho')
+	return scipy.fft.dct( scipy.fft.dct(a.T, n=n, norm='ortho').T, n=n, norm='ortho')
 
 # implement 2D IDCT
 def idct2(a, n):
-	return fftpack.idct(fftpack.idct(a.T, n=n, norm='ortho').T, n=n, norm='ortho')  
+	return scipy.fft.idct(scipy.fft.idct(a.T, n=n, norm='ortho').T, n=n, norm='ortho')
