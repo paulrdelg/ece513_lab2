@@ -23,6 +23,11 @@ def main():
 	#img = mpl.image.imread(filepath)
 	img = PIL.Image.open(filepath)
 	
+	# Define block sizes
+	block_sizes = [8, 16]
+	
+	
+	
 	return 0
 
 if __name__ == "__main__":
