@@ -22,6 +22,7 @@ def main():
 	#img = cv2.imread(filepath)
 	#img = mpl.image.imread(filepath)
 	img = PIL.Image.open(filepath)
+	img = img.convert('1')
 	
 	# Define block sizes
 	block_sizes = [8, 16]
