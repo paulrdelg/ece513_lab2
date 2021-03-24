@@ -5,10 +5,14 @@ import sys
 
 # Common Third-Party Packages
 import cv2
+import matplotlib as mpl
+import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 import numpy as np
 import PIL
 from sklearn.decomposition import PCA
+import scipy
+from scipy import fftpack
 
 def showPepperOCV(title, img):
 	# Output img with window name as 'image'
@@ -33,5 +37,10 @@ def showPepperPIL(img):
 	# prints mode of image
 	print(img.mode)
 
-def other():
-	pass
+# implement 2D DCT
+def dct2(a, n):
+	return fftpack.dct( fftpack.dct(a.T, n=n, norm='ortho').T, n=n, norm='ortho')
+
+# implement 2D IDCT
+def idct2(a, n):
+	return fftpack.idct(fftpack.idct(a.T, n=n, norm='ortho').T, n=n, norm='ortho')  
