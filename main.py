@@ -103,6 +103,188 @@ def main():
 	
 	plt.savefig('mydata/06_snr_vs_k')
 	
+	
+	# DWT Haar level 2 and 3
+	coeffs2h = pywt.wavedec2(img, 'haar', level=2)
+	coeffs3h = pywt.wavedec2(img, 'haar', level=3)
+	
+	# Save Haar Level2 Coefficients
+	cA, cB, cC = coeffs2h
+	
+	filepath = 'mydata/07_haar_level2_coeff1.bmp'
+	cA = np.array(cA)
+	cA = cA.astype(np.uint8)
+	imgPIL = PIL.Image.fromarray(cA)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	filepath = 'mydata/07_haar_level2_coeff2.bmp'
+	cB = np.array(cB)
+	cB = cB.astype(np.uint8)
+	print(cB.shape)
+	cB = cB.reshape((280,280,3))
+	imgPIL = PIL.Image.fromarray(cB)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	filepath = 'mydata/07_haar_level2_coeff3.bmp'
+	cC = np.array(cC)
+	cC = cC.astype(np.uint8)
+	print(cC.shape)
+	cC = cC.reshape((560,560,3))
+	imgPIL = PIL.Image.fromarray(cC)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	# Save Haar Level3 Coefficients
+	coeffA, coeffB, coeffC, coeffD = coeffs3h
+	
+	filepath = 'mydata/07_haar_level3_coeff1.bmp'
+	coeffA = np.array(coeffA)
+	coeffA = coeffA.astype(np.uint8)
+	imgPIL = PIL.Image.fromarray(coeffA)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	filepath = 'mydata/07_haar_level3_coeff2.bmp'
+	coeffB = np.array(coeffB)
+	coeffB = coeffB.astype(np.uint8)
+	coeffB = coeffB.reshape((140,140,3))
+	imgPIL = PIL.Image.fromarray(coeffB)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	filepath = 'mydata/07_haar_level3_coeff3.bmp'
+	coeffC = np.array(coeffC)
+	coeffC = coeffC.astype(np.uint8)
+	coeffC = coeffC.reshape((280,280,3))
+	imgPIL = PIL.Image.fromarray(coeffC)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	filepath = 'mydata/07_haar_level3_coeff4.bmp'
+	coeffD = np.array(coeffD)
+	coeffD = coeffD.astype(np.uint8)
+	coeffD = coeffD.reshape((560,560,3))
+	imgPIL = PIL.Image.fromarray(coeffD)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	# Reconstruct Haar
+	re2h = pywt.waverec2(coeffs2h, 'haar')
+	re3h = pywt.waverec2(coeffs3h, 'haar')
+	
+	# Convert Haar to numpy
+	re2h = np.array(re2h)
+	re3h = np.array(re3h)
+	
+	# Convert to unsigned 8-bit
+	re2h = re2h.astype(np.uint8)
+	re3h = re3h.astype(np.uint8)
+	
+	# Save reconstructed files
+	filepath = 'mydata/08_haar_level2_reconstructed.bmp'
+	imgPIL = PIL.Image.fromarray(re2h)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	filepath = 'mydata/08_haar_level3_reconstructed.bmp'
+	imgPIL = PIL.Image.fromarray(re3h)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	# DWT for DB wavelet
+	coeffs2d = pywt.wavedec2(img, 'db2', level=2)
+	coeffs3d = pywt.wavedec2(img, 'db2', level=3)
+	
+	# Save DB2 Level2 Coefficients
+	coeff1, coeff2, coeff3 = coeffs2d
+	
+	filepath = 'mydata/07_db2_level2_coeff1.bmp'
+	coeff1 = np.array(coeff1)
+	coeff1 = coeff1.astype(np.uint8)
+	imgPIL = PIL.Image.fromarray(coeff1)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	filepath = 'mydata/07_db2_level2_coeff2.bmp'
+	coeff2 = np.array(coeff2)
+	coeff2 = coeff2.astype(np.uint8)
+	print(coeff2.shape)
+	coeff2 = coeff2.reshape((282,282,3))
+	imgPIL = PIL.Image.fromarray(coeff2)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	filepath = 'mydata/07_db2_level2_coeff3.bmp'
+	coeff3 = np.array(coeff3)
+	coeff3 = coeff3.astype(np.uint8)
+	print(coeff3.shape)
+	coeff3 = coeff3.reshape((561,561,3))
+	imgPIL = PIL.Image.fromarray(coeff3)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	# Save Haar Level3 Coefficients
+	coeffA, coeffB, coeffC, coeffD = coeffs3d
+	
+	filepath = 'mydata/07_db2_level3_coeff1.bmp'
+	coeffA = np.array(coeffA)
+	coeffA = coeffA.astype(np.uint8)
+	print(coeffA.shape)
+	imgPIL = PIL.Image.fromarray(coeffA)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	filepath = 'mydata/07_db2_level3_coeff2.bmp'
+	coeffB = np.array(coeffB)
+	coeffB = coeffB.astype(np.uint8)
+	print(coeffB.shape)
+	coeffB = coeffB.reshape((142,142,3))
+	imgPIL = PIL.Image.fromarray(coeffB)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	filepath = 'mydata/07_db2_level3_coeff3.bmp'
+	coeffC = np.array(coeffC)
+	coeffC = coeffC.astype(np.uint8)
+	print(coeffC.shape)
+	coeffC = coeffC.reshape((282,282,3))
+	imgPIL = PIL.Image.fromarray(coeffC)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	filepath = 'mydata/07_db2_level3_coeff4.bmp'
+	coeffD = np.array(coeffD)
+	coeffD = coeffD.astype(np.uint8)
+	print(coeffD.shape)
+	coeffD = coeffD.reshape((561,561,3))
+	imgPIL = PIL.Image.fromarray(coeffD)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	# Reconstruct
+	re2d = pywt.waverec2(coeffs2d, 'db2')
+	re3d = pywt.waverec2(coeffs3d, 'db2')
+	
+	re2d = np.array(re2d)
+	re3d = np.array(re3d)
+	
+	# Convert to unsigned 8-bit
+	re2d = re2d.astype(np.uint8)
+	re3d = re3d.astype(np.uint8)
+	
+	# Save reconstructed files
+	filepath = 'mydata/08_db2_level2_reconstructed.bmp'
+	imgPIL = PIL.Image.fromarray(re2d)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
+	filepath = 'mydata/08_db2_level3_reconstructed.bmp'
+	imgPIL = PIL.Image.fromarray(re3d)
+	imgPIL.convert("L")
+	imgPIL.save(filepath)
+	
 	return 0
 
 if __name__ == "__main__":
